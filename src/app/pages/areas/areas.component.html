@@ -1,0 +1,88 @@
+<div class="login-box card d-flex justify-content-center">
+    <h1 class="d-flex justify-content-center">AGREGAR UN NUEVA AREA </h1>
+    <div class="card-body">
+        <form class="form-horizontal form-material" 
+                autocomplete="off"
+                [formGroup]="AreaForm"
+                (ngSubmit)="postArea()"
+                id="loginform">
+
+            <a href="javascript:void(0)" class="text-center db"></a>
+            <div class="form-group m-t-40">
+                <div class="col-xs-12">
+                    <label>Clave</label>
+                    <input class="form-control" 
+                            type="text" 
+                            placeholder="id_area"
+                            formControlName="id_area">
+                </div>
+            </div>
+            <div class="form-group m-t-40">
+                <div class="col-xs-12">
+                    <label>Descripción</label>
+                    <input class="form-control" 
+                            type="text" 
+                            placeholder="descripcion"
+                            formControlName="descripcion">
+                </div>
+            </div>
+ 
+            <div class="form-group text-center m-t-20">
+                <div class="col-xs-6">
+                    <button class="btn btn-info btn-lg btn-block text-uppercase btn-rounded" type="submit">CREAR</button>
+                    <button class="btn btn-info btn-lg btn-block text-uppercase btn-rounded" type="button" (click)="putArea()">ACTUALIZAR</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>clave</th>
+                                <th>Descripcion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let area of Area">
+                                <td> 
+                                    {{area.id_area}}
+                                </td>
+                                <td> 
+                                    {{area.descripcion}}
+                                </td>
+                                <td class="text-nowrap text-center">
+                                    <a (click)="getAreaId(area.id_area)"
+                                        data-toggle="tooltip" 
+                                        class="cursor"
+                                        data-original-title="Guardar cambios"> 
+                                        <i class="fa fa-pencil text-inverse m-r-10"></i>
+                                        Actualizar 
+                                    </a>
+                                    <a (click)="deleteArea(area.id_area)" 
+                                        data-toggle="tooltip" 
+                                        data-original-title="Borrar"
+                                        class="cursor"> 
+                                        <i class="fa fa-close text-danger">
+                                            Borrar
+                                        </i>
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<a href="/empleados">Empleados</a>
